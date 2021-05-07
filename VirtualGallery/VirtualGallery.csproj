@@ -243,6 +243,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\UpcomingEvents\Index.cshtml" />
     <Content Include="Views\UpcomingEvents\CreateEvent.cshtml" />
+    <Content Include="Views\UpcomingEvents\DeleteEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

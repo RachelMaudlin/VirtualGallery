@@ -7,7 +7,7 @@
 <h2>Upcoming Events</h2>
 
 <p>
-   @Html.ActionLink("Create New Event", "Create")
+   @Html.ActionLink("Create New Event", "CreateEvent")
 </p>
 
 <table class="table">
@@ -43,7 +43,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.EventId })
                 @Html.ActionLink("Details", "Details", new { id = item.EventId })
-                @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+                @Html.ActionLink("Remove", "DeleteEvent", new { id = item.EventId })
             </td>
         </tr>
     }

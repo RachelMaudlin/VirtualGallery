@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VirtualGallery.Models;
@@ -34,6 +35,33 @@ namespace VirtualGallery.Controllers
                 return RedirectToAction("Index");
             }
             return View(upcomingevent);
+        }
+
+        //GET : Upcoming Events/Delete/{id}
+        public ActionResult DeleteEvent(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UpcomingEvents upcomingEvents = _db.Events.Find(id);
+            if (upcomingEvents == null)
+            {
+                return HttpNotFound();
+            }
+            return View(upcomingEvents);
+        }
+
+        //POST : Upcoming Events/Delete/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteEvent(int id)
+        {
+            UpcomingEvents upcomingEvents = _db.Events.Find(id);
+            _db.Events.Remove(upcomingEvents);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
     }
