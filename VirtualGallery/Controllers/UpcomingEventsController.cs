@@ -15,5 +15,26 @@ namespace VirtualGallery.Controllers
         {
             return View(_db.Events.ToList());
         }
+
+        //GET: Upcoming Events/Create
+        public ActionResult CreateEvent()
+        {
+            return View();
+        }
+
+        //POST: Upcoming Events/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEvent(UpcomingEvents upcomingevent)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Events.Add(upcomingevent);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(upcomingevent);
+        }
+
     }
 }
