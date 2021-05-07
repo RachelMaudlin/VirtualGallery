@@ -93,5 +93,19 @@ namespace VirtualGallery.Controllers
             return View(upcomingEvents);
         }
 
+        //GET : Upcoming Events/Details/{id}
+        public ActionResult EventDetails(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UpcomingEvents upcomingEvents = _db.Events.Find(id);
+            if(upcomingEvents == null)
+            {
+                return HttpNotFound();
+            }
+            return View(upcomingEvents);
+        }
     }
 }
