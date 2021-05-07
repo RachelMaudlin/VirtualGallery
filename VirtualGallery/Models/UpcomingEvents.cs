@@ -14,6 +14,9 @@ namespace VirtualGallery.Models
         [ForeignKey(nameof(User))]
         public int Userid { get; set; }
         [Required]
+        [Key]
+        public int EventId { get; set; }
+        [Required]
         public string NameOfEvent { get; set; }
         [Required]
         public string EventDescription { get; set; }
