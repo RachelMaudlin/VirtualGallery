@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,7 +62,35 @@ namespace VirtualGallery.Controllers
             _db.Events.Remove(upcomingEvents);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
 
+        //GET : Upcoming Events/Edit/{id}
+        public ActionResult EditEvent(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UpcomingEvents upcomingEvents = _db.Events.Find(id);
+            if(upcomingEvents == null)
+            {
+                return HttpNotFound();
+            }
+            return View(upcomingEvents);
+        }
+
+        //GET : Upcoming Events/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEvent(UpcomingEvents upcomingEvents)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(upcomingEvents).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(upcomingEvents);
         }
 
     }

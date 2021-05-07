@@ -41,8 +41,8 @@
                 @Html.DisplayFor(modelItem => item.EventAddress)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EventId })
-                @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                @Html.ActionLink("Edit", "EditEvent", new { id = item.EventId })
+                @Html.ActionLink("Details", "EventDetails", new { id = item.EventId })
                 @Html.ActionLink("Remove", "DeleteEvent", new { id = item.EventId })
             </td>
         </tr>

@@ -1,0 +1,53 @@
+﻿@model VirtualGallery.Models.UpcomingEvents
+@{
+    ViewBag.Title = "EditEvent";
+}
+
+<h2>Edit Event</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Upcoming Events</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.EventId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NameOfEvent, htmlAttributes: new { @class = "cotnrol-label col-md-2" })
+        <div class=" col-md-10">
+            @Html.EditorFor(model => model.NameOfEvent, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NameOfEvent, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "cotnrol-label col-md-2" })
+        <div class=" col-md-10">
+            @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EventDescription, htmlAttributes: new { @class = "cotnrol-label col-md-2" })
+        <div class=" col-md-10">
+            @Html.EditorFor(model => model.EventDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EventDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EventAddress, htmlAttributes: new { @class = "cotnrol-label col-md-2" })
+        <div class=" col-md-10">
+            @Html.EditorFor(model => model.EventAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EventAddress, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                @Html.ActionLink("Back to Events", "Index")
+            </div>
+        </div>
+    </div>
+</div>
+}
