@@ -90,5 +90,20 @@ namespace VirtualGallery.Controllers
             }
             return View(exhibition);
         }
+
+        //GET : Exhibition/Details/{id}
+        public ActionResult ExhibitionDetails(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Exhibition exhibition = _db.Exhibitions.Find(id);
+            if (exhibition == null)
+            {
+                return HttpNotFound();
+            }
+            return View(exhibition);
+        }
     }
 }
