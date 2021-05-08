@@ -12,15 +12,16 @@ namespace VirtualGallery.Models
         [Key]
         public int ClientId { get; set; }
         [Required]
+        [Display(Name ="First Name")]
         public string ClientFristName { get; set; }
         [Required]
+        [Display(Name ="Last Name")]
         public string ClientLastName { get; set; }
         [Required]
+        [Display(Name ="Email")]
         public string ClientEmail { get; set; }
+        [Display(Name ="Shipping Address")]
         public string ShippingAddress { get; set; }
-        public DateTimeOffset ClientCreatedUTC { get; set; }
-        public DateTimeOffset ClientModifiedUTC { get; set; }
-
     }
 
     public class ClientsDbContext : DbContext

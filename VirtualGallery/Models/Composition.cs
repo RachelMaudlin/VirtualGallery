@@ -16,13 +16,19 @@ namespace VirtualGallery.Models
         [Key]
         public int CompositionId { get; set; }
         [Required]
+        [Display(Name ="Name of Composition")]
         public string CompositionName { get; set; }
+        [Display(Name ="Composition Description")]
         public string CompositionDescription { get; set; }
-        public string CompositionCreationDate { get; set; }
+        [Display(Name ="Composition Medium")]
+        public string CompositionMedium { get; set; }
+        [Display(Name = "Date of Composition Creation")]
+        public string CompositionCreation { get; set; }
+        public byte[] CompositionImage { get; set; }
     }
 
     public class CompositionsDbContext : DbContext
     {
-        public DbSet<Composition> Compositions { get; set; }
+        public DbSet<Composition> Composition { get; set; }
     }
 }
