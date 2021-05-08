@@ -54,7 +54,7 @@ namespace VirtualGallery.Controllers
         }
 
         //POST : Upcoming Events/Delete/{id}
-        [HttpPost]
+        [HttpPost, ActionName("DeleteEvent")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteEvent(int id)
         {

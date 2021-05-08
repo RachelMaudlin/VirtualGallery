@@ -249,6 +249,7 @@
     <Content Include="Views\UpcomingEvents\EventDetails.cshtml" />
     <Content Include="Views\Exhibition\ExhibitionIndex.cshtml" />
     <Content Include="Views\Exhibition\CreateExhibition.cshtml" />
+    <Content Include="Views\Exhibition\DeleteExhibition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
