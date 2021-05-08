@@ -250,6 +250,7 @@
     <Content Include="Views\Exhibition\ExhibitionIndex.cshtml" />
     <Content Include="Views\Exhibition\CreateExhibition.cshtml" />
     <Content Include="Views\Exhibition\DeleteExhibition.cshtml" />
+    <Content Include="Views\Exhibition\EditExhibition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

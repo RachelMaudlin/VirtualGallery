@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -60,6 +61,34 @@ namespace VirtualGallery.Controllers
             _db.Exhibitions.Remove(exhibition);
             _db.SaveChanges();
             return RedirectToAction("ExhibitionIndex");
+        }
+        //GET:Exhibition/Edit/{id}
+        public ActionResult EditExhibition(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Exhibition exhibition = _db.Exhibitions.Find(id);
+            if(exhibition == null)
+            {
+                return HttpNotFound();
+            }
+            return View(exhibition);
+        }
+
+        //POST : Exhibition/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditExhibition(Exhibition exhibition)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(exhibition).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("ExhibitionIndex");
+            }
+            return View(exhibition);
         }
     }
 }
