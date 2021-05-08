@@ -1,7 +1,49 @@
-﻿
+﻿@model IEnumerable<VirtualGallery.Models.Exhibition>
+
 @{
     ViewBag.Title = "ExhibitionIndex";
 }
 
 <h2>Exhibitions</h2>
+<p>
+    @Html.ActionLink("Add Exhibition", "CreateExhibition")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExhibitionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExhibitionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExhibitionDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExhibitionLocation)
+        </th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExhibitionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExhibitionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExhibitionDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExhibitionLocation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditExhibition", new { id = item.ExhibitionId})
+                @Html.ActionLink("Details", "ExhibitionDetails", new { id = item.ExhibitionId})
+                @Html.ActionLink("Remove", "DeleteExhibition", new { id = item.ExhibitionId})
+            </td>
+        </tr>
+    }
+</table>
 
